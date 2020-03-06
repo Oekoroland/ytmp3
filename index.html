@@ -1,83 +1,60 @@
-<html>
-<head>
-<title>Youtube to MP3 converter</title>
- 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-<style type="text/css">
-body {
-  background: #464646; /* fallback for old browsers */
-}
-  div {
-		padding:8px;
-	}
-</style>
-
-</head>
- 
-<body>
- 
-<h1 style="text-align:center; color:#D8DCE4">Youtube to MP3 converter</h1>
- 
-<script type="text/javascript">
- 
-$(document).ready(function(){
- 
-    var counter = 2;
- 
-    $("#addButton").click(function () {
- 
-	if(counter>10){
-            alert("Max. 10 videos!\nErstelle eine Playlist :-).");
-            return false;
-	}   
- 
-	var newTextBoxDiv = $(document.createElement('div'))
-	     .attr("id", 'TextBoxDiv' + counter);
- 
-	newTextBoxDiv.after().html('<label style="color:#D8DCE4">YouTube-Link #'+ counter + ' : </label>' +
-	      '<input type="text" name="textbox' + counter + 
-	      '" id="textbox' + counter + '" value="" style="width:400px">');
- 
-	newTextBoxDiv.appendTo("#TextBoxesGroup");
- 
- 
-	counter++;
-     });
- 
-     $("#removeButton").click(function () {
-	if(counter==2){
-          alert("Hör auf, alle Textboxen zu entfernen ;-).");
-          return false;
-       }   
- 
-	counter--;
- 
-        $("#TextBoxDiv" + counter).remove();
- 
-     });
- 
-     $("#getButtonValue").click(function () {
- 
-	var msg = '';
-	for(i=1; i<counter; i++){
-   	  msg += "\n YouTube-Link #" + i + " : " + $('#textbox' + i).val();
-	}
-    	  alert(msg);
-     });
-  });
-</script> 
-<div id='TextBoxesGroup'>
-	<div id="TextBoxDiv1">
-		<label style="color:#D8DCE4">YouTube-Link #1 : </label><input type='textbox' id='textbox1' style="width:400px">
-	</div>
-</div>
-<div style="position: fixes;" class="anchor-point">
-   <div style="position: fixed; top: 74px; right: 470px;">
-	<input type='button' value='Weiterer Link' id='addButton'>
-	<input type='button' value='Entferne Link' id='removeButton'>
-	<input type='button' value='Zeige Links' id='getButtonValue'>
-	</div>
-   </div>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Youtube to MP3 converter</title>
+		<link rel="stylesheet" href="css/style.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			var counter = 2;
+			$("#addButton").click(function () {
+					if(counter>10){
+						alert("Max. 10 videos!\nErstelle eine Playlist :-).");
+						return false;
+					}   
+					var newTextBoxDiv = $(document.createElement('div'))
+					.attr("id", 'TextBoxDiv' + counter);
+					newTextBoxDiv.after().html('<label style="color:#dfdfdf">YouTube-Link #'+ counter + ' : </label>' +
+					'<input type="text" name="textbox' + counter + 
+					'" id="textbox' + counter + '" value="" style="width:200px">');
+					newTextBoxDiv.appendTo("#TextBoxesGroup");
+					counter++;
+			});
+			$("#removeButton").click(function () {
+				if(counter==2){
+					alert("Hör auf, alle Textboxen zu entfernen ;-).");
+					return false;
+				}
+			counter--;
+			$("#TextBoxDiv" + counter).remove();
+			});
+			$("#getButtonValue").click(function () {
+				var msg = '';
+				for(i=1; i<counter; i++){
+					msg += "\n YouTube-Link #" + i + " : " + $('#textbox' + i).val();
+				}
+			alert(msg);
+			});
+		});
+</script>
+		<div class="form" style="height:730px">
+		<h1 style="color:#dfdfdf">Youtube to MP3 converter</h1><br>
+			<form class="login-form" action="UPSTREAM.php" method="POST">
+				<div id='TextBoxesGroup' style="position: absolute">
+					<div id="TextBoxDiv1">
+						<label style="color:#dfdfdf;text-align:left">YouTube-Link #1 : </label><input type='textbox' id='textbox1' style="width:200px">
+					</div>
+				</div>
+				<button type="button" value="Add Button" id="addButton" style="background:#A9D0F5">Link hinzufügen</button><br><br>
+				<button type="button" value="Remove Button" id="removeButton" style="background:#A9D0F5">Link entfernen</button><br><br>
+				<button type="button" value="Get TextBox Value" id="getButtonValue" style="background:#A9D0F5">Links anzeigen</button><br><br>
+				<button type="submit" value="Check" name="Check" style="font-size:25px;font-weight:bold">Download</button><br><br>
+			</form>
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script  src="js/index.js"></script>
+	</body>
 </html>
