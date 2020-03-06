@@ -3,28 +3,21 @@
 <title>Youtube to MP3 converter</title>
  
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
- 
+
 <style type="text/css">
+body {
+  background: #464646; /* fallback for old browsers */
+}
   div {
 		padding:8px;
-		
 	}
-#switch {
-  height:50px;
-  width:50px;
-  background: #F00; /* Just so we can see it */
-  position: absolute;
-  top: 150px;
-  left: 50%;  /* Put the left edge on the horizontal center */
-  margin-left: 148px; /* Move it 148px to the right of the horizontal center, placing it over the lightswitch */
- }
 </style>
- 
+
 </head>
  
-<body align=center>
+<body>
  
-<h1>Youtube to MP3 converter</h1>
+<h1 style="text-align:center; color:#D8DCE4">Youtube to MP3 converter</h1>
  
 <script type="text/javascript">
  
@@ -35,16 +28,16 @@ $(document).ready(function(){
     $("#addButton").click(function () {
  
 	if(counter>10){
-            alert("Max. 10 videos!\nCreate a damn playlist :-).");
+            alert("Max. 10 videos!\nErstelle eine Playlist :-).");
             return false;
 	}   
  
 	var newTextBoxDiv = $(document.createElement('div'))
 	     .attr("id", 'TextBoxDiv' + counter);
  
-	newTextBoxDiv.after().html('<label>YouTube-Link #'+ counter + ' : </label>' +
+	newTextBoxDiv.after().html('<label style="color:#D8DCE4">YouTube-Link #'+ counter + ' : </label>' +
 	      '<input type="text" name="textbox' + counter + 
-	      '" id="textbox' + counter + '" value="" style="width: 400px">');
+	      '" id="textbox' + counter + '" value="" style="width:400px">');
  
 	newTextBoxDiv.appendTo("#TextBoxesGroup");
  
@@ -54,7 +47,7 @@ $(document).ready(function(){
  
      $("#removeButton").click(function () {
 	if(counter==2){
-          alert("Stop removing all the Textboxes :-).");
+          alert("Hör auf, alle Textboxen zu entfernen ;-).");
           return false;
        }   
  
@@ -73,19 +66,17 @@ $(document).ready(function(){
     	  alert(msg);
      });
   });
-</script>
-</head><body>
- 
+</script> 
 <div id='TextBoxesGroup'>
 	<div id="TextBoxDiv1">
-		<label>YouTube-Link #1 : </label><input type='textbox' id='textbox1' style="width: 400px">
+		<label style="color:#D8DCE4">YouTube-Link #1 : </label><input type='textbox' id='textbox1' style="width:400px">
 	</div>
 </div>
 <div style="position: fixes;" class="anchor-point">
    <div style="position: fixed; top: 74px; right: 470px;">
-	<input type='button' value='Add Button' id='addButton'>
-	<input type='button' value='Remove Button' id='removeButton'>
-	<input type='button' value='Get TextBox Value' id='getButtonValue'>
+	<input type='button' value='Weiterer Link' id='addButton'>
+	<input type='button' value='Entferne Link' id='removeButton'>
+	<input type='button' value='Zeige Links' id='getButtonValue'>
 	</div>
    </div>
 </body>
