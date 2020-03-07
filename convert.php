@@ -12,7 +12,31 @@
 				}
 				$counter++;
 			}
-			echo $counter . " gültige Links gefunden.</br>";
+			$id = md5(uniqid().mt_rand());
+			mkdir('/PATH/TO/DOWNLOADS/'.$id, 0755, true);
+			$linksForYTDL = "";
+			for($j = 1; $j <= $counter; $j++) {
+				$linksForYTDL .= ${"link" . $j} . " ";
+			}
+			$downloadDirectory = "/PATH/TO/DOWNLOADS/".$id."/";
+			passthru("youtube-dl --cookies /PATH/TO/DOWNLOADS/cookies.txt --extract-audio --embed-thumbnail --audio-format mp3 --audio-quality 0 --output \"/PATH/TO/DOWNLOADS/".$id."/%(title)s.%(ext)s\" ".$linksForYTDL."> /dev/null");
+			$files = glob($downloadDirectory. '*.mp3');
+			if ($files !== false) {
+				$filecount = count($files);
+				if ($filecount > 1) {
+					shell_exec("cd /PATH/TO/DOWNLOADS/".$id." && zip -r ytmp3-download.zip *");
+					shell_exec("rm -rf -d /PATH/TO/DOWNLOADS/".$id."/*.mp3");
+					echo "<a href=\"download.php?type=multiple&id=".$id."\" target=\"_blank\">DOWNLOAD!</a>";
+				}
+				else
+				{
+					echo "<a href=\"download.php?type=single&id=".$id."\" target=\"_blank\">DOWNLOAD!</a>";
+				}
+			}
+			else
+			{
+				die("Keine Dateien gefunden!");
+			}
 		}
 		else
 		{
