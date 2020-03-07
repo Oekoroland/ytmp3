@@ -26,11 +26,11 @@
 				if ($filecount > 1) {
 					shell_exec("cd /PATH/TO/DOWNLOADS/".$id." && zip -r ytmp3-download.zip *");
 					shell_exec("rm -rf -d /PATH/TO/DOWNLOADS/".$id."/*.mp3");
-					echo "<a href=\"download.php?type=multiple&id=".$id."\" target=\"_blank\">DOWNLOAD!</a>";
+					echo "<a style=\"font-size:80px\" href=\"download.php?type=multiple&id=".$id."\" target=\"_blank\">DOWNLOAD!</a>";
 				}
 				else
 				{
-					echo "<a href=\"download.php?type=single&id=".$id."\" target=\"_blank\">DOWNLOAD!</a>";
+					echo "<a style=\"font-size:80px\" href=\"download.php?type=single&id=".$id."\" target=\"_blank\">DOWNLOAD!</a>";
 				}
 			}
 			else
