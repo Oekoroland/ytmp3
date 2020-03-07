@@ -8,11 +8,11 @@
 			for($i = 1; $i <= count($_POST); $i++) {
 				${"link" . $i} = $_POST['link'.$i];
 				if (strlen(${"link" . $i}) != 43 || substr(${"link" . $i}, 0, 32) !== "https://www.youtube.com/watch?v=") {
-					die("Mindestens eine URL ist kein gültiges Youtube-Video: \"" . ${"link" . $i} . "\"</br><a href=\"index.html\">Back</a></br>");
+					die("Mindestens eine URL ist kein gültiges Youtube-Video: \"" . ${"link" . $i} . "\"</br>URL sollte so aussehen: https://www.youtube.com/watch?v=[VIDEO-ID]</br><a href=\"index.html\">Back</a></br>");
 				}
 				$counter++;
 			}
-			echo "Links sind da :-)!</br>Counter=" . $counter . "</br>";
+			echo $counter . " gültige Links gefunden.</br>";
 		}
 		else
 		{
