@@ -18,7 +18,7 @@
 					var newTextBoxDiv = $(document.createElement('div'))
 					.attr("id", 'TextBoxDiv' + counter);
 					newTextBoxDiv.after().html('<label style="color:#dfdfdf">YouTube-Link #'+ counter + ' : </label>' +
-					'<input type="text" name="textbox' + counter + 
+					'<input type="text" name="link' + counter + 
 					'" id="textbox' + counter + '" value="" style="width:200px">');
 					newTextBoxDiv.appendTo("#TextBoxesGroup");
 					counter++;
@@ -40,18 +40,18 @@
 			});
 		});
 </script>
-		<div class="form" style="height:730px">
+		<div class="form" style="height:730px;width:1080px">
 		<h1 style="color:#dfdfdf">Youtube to MP3 converter</h1><br>
-			<form class="login-form" action="UPSTREAM.php" method="POST">
+			<form class="login-form" action="convert.php" method="POST">
 				<div id='TextBoxesGroup' style="position: absolute">
 					<div id="TextBoxDiv1">
-						<label style="color:#dfdfdf;text-align:left">YouTube-Link #1 : </label><input type='textbox' id='textbox1' style="width:200px">
+						<label style="color:#dfdfdf;text-align:left">YouTube-Link #1 : </label><input type="text" name="link1" id="textbox1" value="" style="width:200px">
 					</div>
 				</div>
 				<button type="button" value="Add Button" id="addButton" style="background:#A9D0F5">Link hinzufügen</button><br><br>
 				<button type="button" value="Remove Button" id="removeButton" style="background:#A9D0F5">Link entfernen</button><br><br>
 				<button type="button" value="Get TextBox Value" id="getButtonValue" style="background:#A9D0F5">Links anzeigen</button><br><br>
-				<button type="submit" value="Check" name="Check" style="font-size:25px;font-weight:bold">Download</button><br><br>
+				<button type="submit" value="Check" style="font-size:25px;font-weight:bold">Download</button><br><br>
 			</form>
 		</div>
 	</body>
