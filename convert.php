@@ -7,10 +7,18 @@
 			$counter = 0;
 			for($i = 1; $i <= count($_POST); $i++) {
 				${"link" . $i} = $_POST['link'.$i];
-				if (strlen(${"link" . $i}) != 43 || substr(${"link" . $i}, 0, 32) !== "https://www.youtube.com/watch?v=") {
-					die("Mindestens eine URL ist kein gültiges Youtube-Video: \"" . ${"link" . $i} . "\"</br>URL sollte so aussehen: https://www.youtube.com/watch?v=[VIDEO-ID]</br><a href=\"index.html\">Back</a></br>");
+				if (substr(${"link" . $i}, 0, 32) === "https://www.youtube.com/watch?v=") {
+					$counter++;
+					${"link" . $i} = substr(${"link" . $i},0,43);
 				}
-				$counter++;
+				elseif (substr(${"link" . $i}, 0, 17) === "https://youtu.be/") {
+					$counter++;
+					${"link" . $i} = substr(${"link" . $i},0,28);
+				}
+				else
+				{
+					die("Mindestens eine URL ist kein gültiges Youtube-Video: \"" . ${"link" . $i} . "\"</br>Die URL sollte folgendermaßen aussehen: https://www.youtube.com/watch?v=[VIDEO-ID] <b>ODER</b> https://youtu.be/[VIDEO-ID]</br><a href=\"index.html\">Back</a></br>");
+				}
 			}
 			$id = md5(uniqid().mt_rand());
 			mkdir('/PATH/TO/DOWNLOADS/'.$id, 0755, true);
