@@ -54,7 +54,6 @@
 	else
 	{
 	// Nur POST erlaubt!
-        http_response_code(405);
-		echo "Nope! Try \"POST\" instead.</br><a href=\"index.html\">Back</a>";
+		header('Location: index.html');
 	}
 ?>
