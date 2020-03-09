@@ -29,6 +29,6 @@ if(isset($_GET['type']) && isset($_GET['id']) && strlen($_GET['id']) == 32 && $_
 }
 else
 {
-	die("Ungültige URL.</br><a href=\"index.html\">Back</a>");
+	header('Location: index.html');
 }
 ?>
