@@ -17,7 +17,7 @@ if(isset($_GET['type']) && isset($_GET['id']) && strlen($_GET['id']) == 32 && $_
 		$mp3File = $dirList[2];
 		$totalPathTosingleMp3File = $dir . $mp3File;
 		header('Content-Type: audio/mpeg');
-		header("Content-Transfer-Encoding: Binary");
+                header("Content-Transfer-Encoding: Binary");
 		header("Content-disposition: attachment; filename=\"" . basename($totalPathTosingleMp3File) . "\"");
                 readfile($totalPathTosingleMp3File);
                 exit();
