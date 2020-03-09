@@ -34,11 +34,11 @@
 				if ($filecount > 1) {
 					shell_exec("cd /PATH/TO/DOWNLOADS/".$id." && zip -r ytmp3-download.zip *");
 					shell_exec("rm -rf -d /PATH/TO/DOWNLOADS/".$id."/*.mp3");
-					echo "<a style=\"font-size:80px\" href=\"download.php?type=multiple&id=".$id."\" target=\"_blank\">DOWNLOAD!</a>";
+					echo "<body style=\"background-color:#212529\"><h1 style=\"text-align:center;color:white\">MP3s herunterladen</h1><div style=\"text-align:center\"><a href=\"download.php?type=multiple&id=".$id."\" target=\"_blank\"><button style=\"top:50%;width:270px;background-color:DodgerBlue;border:none;color:white;padding:12px 30px;cursor:pointer;font-size:20px\">Download</button></a></div></body>";
 				}
 				else
 				{
-					echo "<a style=\"font-size:80px\" href=\"download.php?type=single&id=".$id."\" target=\"_blank\">DOWNLOAD!</a>";
+					echo "<body style=\"background-color:#212529\"><h1 style=\"text-align:center;color:white\">MP3 herunterladen</h1><div style=\"text-align:center\"><a href=\"download.php?type=single&id=".$id."\" target=\"_blank\"><button style=\"top:50%;width:270px;background-color:DodgerBlue;border:none;color:white;padding:12px 30px;cursor:pointer;font-size:20px\">Download</button></a></div></body>";
 				}
 			}
 			else
@@ -48,7 +48,7 @@
 		}
 		else
 		{
-			die("Error. Bitte erneut versuchen.</br><a href=\"index.html\">Back</a>");
+			die("Ein Fehler ist aufgetreten. Bitte erneut versuchen.</br><a href=\"index.html\">Back</a>");
 		}
 	}
 	else
