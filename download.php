@@ -1,5 +1,4 @@
 <?php
-//If required GET vars are not set, empty or wrong, die.
 if(isset($_GET['type']) && isset($_GET['id']) && strlen($_GET['id']) == 32 && $_GET['type'] == "single" || $_GET['type'] == "multiple") {
 	$id = $_GET['id'];
 	$type = $_GET['type'];
@@ -14,6 +13,7 @@ if(isset($_GET['type']) && isset($_GET['id']) && strlen($_GET['id']) == 32 && $_
 	elseif ($type == "single" && file_exists("/PATH/TO/DOWNLOADS/".$id)) {
 		$dir = "/PATH/TO/DOWNLOADS/".$id."/";
 		$dirList = scandir($dir);
+		//Array Wert 2, da 0: ".", 1: ".." & 2: "gesuchte.mp3".
 		$mp3File = $dirList[2];
 		$totalPathTosingleMp3File = $dir . $mp3File;
 		header('Content-Type: audio/mpeg');
@@ -22,11 +22,13 @@ if(isset($_GET['type']) && isset($_GET['id']) && strlen($_GET['id']) == 32 && $_
                 readfile($totalPathTosingleMp3File);
                 exit();
 	}
+	//Gib eine Fehlermeldung raus, falls die ID nicht existiert.
 	else
 	{
 		die("Ungültige ID.</br><a href=\"index.html\">Back</a>");
 	}
 }
+//Falls keine der zwei URL Parameter übergeben werden, leite an die Hauptseite weiter.
 else
 {
 	header('Location: index.html');
