@@ -2,7 +2,7 @@
 if(isset($_GET['type']) && isset($_GET['id']) && strlen($_GET['id']) == 32 && $_GET['type'] == "single" || $_GET['type'] == "multiple") {
 	$id = $_GET['id'];
 	$type = $_GET['type'];
-	//Exclude all non word characters in RegEx-style ;-)
+	//Exkludiere alle "Nicht-Wortzeichen" in RegEx-style ;-)
 	$blacklistedCHARs = "/[\W]+/";
 	if ($type == "multiple" && !preg_match($blacklistedCHARs, $id) && file_exists("/PATH/TO/DOWNLOADS/".$id)) {
 		$file_path = "/PATH/TO/DOWNLOADS/".$id."/ytmp3-download.zip";
