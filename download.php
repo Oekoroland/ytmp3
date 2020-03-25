@@ -2,7 +2,9 @@
 if(isset($_GET['type']) && isset($_GET['id']) && strlen($_GET['id']) == 32 && $_GET['type'] == "single" || $_GET['type'] == "multiple") {
 	$id = $_GET['id'];
 	$type = $_GET['type'];
-	if ($type == "multiple" && file_exists("/PATH/TO/DOWNLOADS/".$id)) {
+	//Exclude all non word characters in RegEx-style ;-)
+	$blacklistedCHARs = "/[\W]+/";
+	if ($type == "multiple" && !preg_match($blacklistedCHARs, $id) && file_exists("/PATH/TO/DOWNLOADS/".$id)) {
 		$file_path = "/PATH/TO/DOWNLOADS/".$id."/ytmp3-download.zip";
 		header('Content-Type: application/zip');
 		header("Content-Transfer-Encoding: Binary");
@@ -10,7 +12,7 @@ if(isset($_GET['type']) && isset($_GET['id']) && strlen($_GET['id']) == 32 && $_
 		readfile($file_path);
 		exit();
 	}
-	elseif ($type == "single" && file_exists("/PATH/TO/DOWNLOADS/".$id)) {
+	elseif ($type == "single" && !preg_match($blacklistedCHARs, $id) && file_exists("/PATH/TO/DOWNLOADS/".$id)) {
 		$dir = "/PATH/TO/DOWNLOADS/".$id."/";
 		$dirList = scandir($dir);
 		//Array Wert 2, da 0: ".", 1: ".." & 2: "gesuchte.mp3".
