@@ -2,18 +2,19 @@
 if(isset($_GET['type']) && isset($_GET['id']) && strlen($_GET['id']) == 32 && $_GET['type'] == "single" || $_GET['type'] == "multiple") {
 	$id = $_GET['id'];
 	$type = $_GET['type'];
+	$videoDownloadVerzeichnis = "/PATH/TO/DOWNLOADS/";
 	//Exkludiere alle "Nicht-Wortzeichen" in RegEx-style ;-)
 	$blacklistedCHARs = "/[\W]+/";
-	if ($type == "multiple" && !preg_match($blacklistedCHARs, $id) && file_exists("/PATH/TO/DOWNLOADS/".$id)) {
-		$file_path = "/PATH/TO/DOWNLOADS/".$id."/ytmp3-download.zip";
+	if ($type == "multiple" && !preg_match($blacklistedCHARs, $id) && file_exists($videoDownloadVerzeichnis.$id)) {
+		$file_path = $videoDownloadVerzeichnis.$id."/ytmp3-download.zip";
 		header('Content-Type: application/zip');
 		header("Content-Transfer-Encoding: Binary");
 		header("Content-disposition: attachment; filename=\"" . basename($file_path) . "\"");
 		readfile($file_path);
 		exit();
 	}
-	elseif ($type == "single" && !preg_match($blacklistedCHARs, $id) && file_exists("/PATH/TO/DOWNLOADS/".$id)) {
-		$dir = "/PATH/TO/DOWNLOADS/".$id."/";
+	elseif ($type == "single" && !preg_match($blacklistedCHARs, $id) && file_exists($videoDownloadVerzeichnis.$id)) {
+		$dir = $videoDownloadVerzeichnis.$id."/";
 		$dirList = scandir($dir);
 		//Array Wert 2, da 0: ".", 1: ".." & 2: "gesuchte.mp3".
 		$mp3File = $dirList[2];
