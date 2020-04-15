@@ -6,6 +6,7 @@ Der PHP YouTube to MP3 converter ist in der Lage YouTube Videos in MP3-Dateien u
 - [youtube-dl](https://github.com/ytdl-org/youtube-dl) in $PATH
 - cookies.txt (exportierte Cookies von YouTube als Textdatei)
 - funktionierender Webserver (Caddy bevorzugt)
+- Lese- und Schreibrechte im ".cache" Ordner des Homeverzeichnis' des PHP- und Webserverusers (wichtig für youtube-dl bei mehreren queued downloads)
 - < php7.0-fpm
 
 Getestet unter Debian 10 amd64 mit PHP7.4-fpm und Caddy Web Server v2.
