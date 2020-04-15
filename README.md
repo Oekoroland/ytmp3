@@ -18,7 +18,7 @@ $ cd /folder/to/www-path
 $ git clone https://github.com/Oekoroland/ytmp3.git
 $ chmod -R 755 ytmp3/ && chown -R www-data:www-data ytmp3/
 ```
-In den PHP-Dateien `convert.php` und `download.php` muss dann noch der Download-Ordner Pfad angepasst werden (**/PATH/TO/DOWNLOADS**)
+In den PHP-Dateien `convert.php` und `download.php` muss dann noch der Download-Ordner Pfad in der Variable _$videoDownloadVerzeichnis_ angepasst werden (**/PATH/TO/DOWNLOADS**).
 Der Downloads-Ordner, in dem alle heruntergeladenen Dateien von youtube-dl gespeichert werden, sollte am besten außerhalb des www-paths liegen, damit keine Dateien direkt verlinkt und heruntergeladen werden können (Hotlink-Protection). Daher wird ein neuer Ordner außerhalb des Webpfades angelegt mit entsprechenden Berechtigungen. Hierhin sollte auch die cookies.txt abgelegt werden.
 ```sh
 $ mkdir /path/to/downloads
