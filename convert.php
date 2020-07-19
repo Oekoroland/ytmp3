@@ -38,7 +38,7 @@
 			}
 			$downloadDirectory = $videoDownloadVerzeichnis.$id."/";
 			//Führe youtube-dl aus und konvertiere die Videos zu MP3s.
-			passthru("youtube-dl --cookies ".$videoDownloadVerzeichnis."cookies.txt --extract-audio --embed-thumbnail --restrict-filenames --audio-format mp3 --audio-quality 0 --output \"".$videoDownloadVerzeichnis.$id."/%(title)s.%(ext)s\" ".$linksForYTDL."> /dev/null");
+			passthru("youtube-dl --cookies ".$videoDownloadVerzeichnis."cookies.txt --extract-audio --restrict-filenames --audio-format mp3 --audio-quality 0 --output \"".$videoDownloadVerzeichnis.$id."/%(title)s.%(ext)s\" ".$linksForYTDL."> /dev/null");
 			//Prüfe die Anzahl der Dateien im Downloadverzeichnis.
 			$files = glob($downloadDirectory. '*.mp3');
 			if ($files !== false) {
